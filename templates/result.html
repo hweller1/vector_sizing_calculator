@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Recommended MongoDB Search Node</h1>
+    <p> RAM Required: {{ required_ram_gb }} GB</p>
+    {% if recommended_tier %}
+        <p>Cluster Tier: {{ recommended_tier.tier }}</p>
+        <p>Above 4 GB, if you anticipate query volume to be high, use high-cpu, otherwise stick with low-cpu to save $</p>
+        <p>RAM: {{ recommended_tier.ram_gb }} GB</p>
+        <p>Rough Price per Node: ${{ recommended_tier.price_per_hr }} per hour</p>
+        <p>Rough Price for Two-Node Replica Set: ${{ recommended_tier.price_per_hr * 2 }} per hour</p>
+    {% else %}
+        <p>Looks like you need to shard! It's time to contact your friendly search specialist for help: https://specialists.sa.prod.corp.mongodb.com/Help</p>
+    {% endif %}
+    <a href="/">Go back</a>
+</body>
+</html>
